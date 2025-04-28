@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray the Moon Boy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/ray-logo.png" alt="Ray the Moon Boy Logo">
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#token">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#community">Community</a>
+            </div>
+            <div class="connect-btn">
+                <a href="https://t.me/raymoonboy"><button class="glow-btn"><i class="fas fa-users"></i>Join Community</button></a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
+                <h1 class="animated-title">Ray the Moon Boy</h1>
+                <p class="hero-subtitle">The first meme that goes beyondConnect Wallet the hype</p>
+                <div class="hero-buttons">
+                    <button class="glow-btn primary"><i class="fas fa-rocket"></i> Learn More</button>
+                    <a href="https://t.me/raymoonboy"><button class="glow-btn secondary"><i class="fas fa-users"></i> Join Community</button></a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <img src="images/ray-rocket.png" alt="Ray on a rocket" class="floating">
+                <div class="animated-orbit"></div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="section-header">
+                <h2>About Ray</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right" data-aos-duration="1000">
+                    <p>Ray the Moon Boy is more than just a meme—he's a movement. Ray is a relatable degen on a mission to moon, creating a fun, rewarding experience for community members around the world.</p>
+                    <p>Our approach is community-first, combining viral content with a real utility token that will power the ecosystem around Ray.</p>
+                    <div class="about-stats">
+                        <div class="stat-item animate-on-reveal">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Community Members</span>
+                        </div>
+                        <div class="stat-item animate-on-reveal">
+                            <span class="stat-number">$RAY</span>
+                            <span class="stat-label">Token Launch Soon</span>
+                        </div>
+                        <div class="stat-item animate-on-reveal">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Community Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="images/img2.png" alt="Ray the Astronaut" class="floating">
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="section-header">
+                <h2>Key Features</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3>Community Driven</h3>
+                    <p>Join a passionate community of believers in Ray's journey to the moon.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3>Exclusive Content</h3>
+                    <p>Get access to exclusive memes, stories, and Ray adventures.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-ranking-star"></i>
+                    </div>
+                    <h3>Status Levels</h3>
+                    <p>Earn special status within the Ray community through participation.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <h3>Token Rewards</h3>
+                    <p>Earn $RAY tokens for community engagement and special events.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3>NFT Collection</h3>
+                    <p>Collect limited Ray NFTs showcasing his space adventures.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Community DAO</h3>
+                    <p>Vote on the future of Ray and help guide project decisions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tokenomics" id="token">
+            <div class="section-header">
+                <h2>Tokenomics</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="tokenomics-content">
+                <div class="token-info" data-aos="fade-right" data-aos-duration="1000">
+                    <h3>$RAY Token</h3>
+                    <p>Total Supply: 1,000,000,000 $RAY</p>
+                    <p>The $RAY token will be introduced as the main driver for community growth, offering utility and rewards for holders.</p>
+                    <ul class="token-features">
+                        <li><i class="fas fa-check-circle"></i> No taxes</li>
+                        <li><i class="fas fa-check-circle"></i> Renounced contract</li>
+                        <li><i class="fas fa-check-circle"></i> LP locked for 1 year</li>
+                        <li><i class="fas fa-check-circle"></i> Community-driven governance</li>
+                    </ul>
+                    <div class="token-buttons">
+                        <button class="glow-btn primary">Buy $RAY <i class="fas fa-external-link-alt"></i></button>
+                        <button id="copy-contract" class="glow-btn secondary disabled" data-contract="coming-soon">Contract Coming Soon <i class="fas fa-clock"></i></button>
+                    </div>
+                </div>
+                <div class="token-chart" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="chart-container">
+                        <canvas id="tokenChart"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="color-box play-to-earn"></span>
+                            <span>Rewards: 40%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-box liquidity"></span>
+                            <span>Liquidity & CEX: 20%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-box team"></span>
+                            <span>Team & Advisors: 15%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-box marketing"></span>
+                            <span>Marketing: 10%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-box treasury"></span>
+                            <span>Community Treasury: 10%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-box reserve"></span>
+                            <span>Reserve: 5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="roadmap" id="roadmap">
+            <div class="section-header">
+                <h2>Roadmap</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q2 2025</h3>
+                        <ul>
+                            <li>Community launch</li>
+                            <li>Community growth + Telegram bot</li>
+                            <li>Initial meme drops</li>
+                            <li>Partnership announcements</li>
+                        </ul>
+                        <div class="timeline-progress completed">
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q3 2025</h3>
+                        <ul>
+                            <li>Token prelaunch (airdrop, whitelist)</li>
+                            <li>NFT teaser release</li>
+                            <li>Staking & reward preview</li>
+                            <li>Community events expansion</li>
+                        </ul>
+                        <div class="timeline-progress in-progress">
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Q4 2025</h3>
+                        <ul>
+                            <li>Full $RAY token launch</li>
+                            <li>NFT collection release</li>
+                            <li>Merchandise store</li>
+                            <li>Community DAO beta</li>
+                            <li>Exchange listings</li>
+                        </ul>
+                        <div class="timeline-progress upcoming">
+                            <span>Upcoming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="slideshow-container">
+                <div class="slides fade">
+                    <img src="images/ray-rocket.jpg" alt="Ray Adventure 1">
+                </div>
+                
+                <div class="slides fade">
+                    <img src="images/img8.jpg" alt="Ray Adventure 3">
+                </div>
+                
+                <div class="slides fade">
+                    <img src="images/img4.jpg" alt="Ray Adventure 4">
+                </div>
+                
+                <div class="slides fade">
+                    <img src="images/img5.jpg" alt="Ray Adventure 5">
+                </div>
+                
+                <!-- Navigation dots -->
+                <div class="dots-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+                
+                <!-- Navigation arrows -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </section>
+
+        <section class="community" id="community">
+            <a href="https://t.me/raymoonboy" target="_blank" rel="noopener" class="header-link">
+                <div class="section-header clickable">
+                    <h2>Join the Community <i class="fas fa-external-link-alt"></i></h2>
+                    <div class="section-line"></div>
+                </div>
+            </a>
+            <div class="community-links">
+                <a href="https://t.me/raymoonboy" class="social-link telegram" data-aos="zoom-in" data-aos-delay="100" target="_blank" rel="noopener">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://x.com/raymoonboy?s=21" class="social-link twitter" data-aos="zoom-in" data-aos-delay="200" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="social-link discord" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="#" class="social-link medium" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fab fa-medium"></i>
+                    <span>Medium</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/img3.png" alt="Ray the Moon Boy Logo">
+                <p>Ray the Moon Boy © 2025</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://t.me/raymoonboy">Telegram</a>
+                <a href="https://x.com/raymoonboy?s=21">Twitter</a>
+                <!-- <a href="#">Whitepaper</a>
+                <a href="#">Contact</a> -->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Ray the Moon Boy is a community-driven project. Always do your own research before investing.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom cursor elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
