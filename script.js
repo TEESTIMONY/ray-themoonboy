@@ -92,6 +92,54 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
     });
 
+    // Countdown Timer Implementation
+    function updateCountdown() {
+        const now = new Date();
+        
+        // Find the next Friday
+        const nextFriday = new Date();
+        nextFriday.setDate(now.getDate() + (5 + 7 - now.getDay()) % 7);
+        
+        // Set time to 7:00 PM
+        nextFriday.setHours(19, 0, 0, 0);
+        
+        // If today is Friday and it's after 7pm, set to next Friday
+        if (now.getDay() === 5 && now.getHours() >= 19) {
+            nextFriday.setDate(nextFriday.getDate() + 7);
+        }
+        
+        // Calculate the time difference
+        const timeDifference = nextFriday - now;
+        
+        // Calculate days, hours, minutes and seconds
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        
+        // Update the HTML elements
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        
+        // Update countdown info with exact date time
+        const options = { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        const formattedLaunchDate = nextFriday.toLocaleDateString('en-US', options);
+        
+        // Get the countdown info element and update if it exists
+        const countdownInfo = document.querySelector('.countdown-info p');
+        if (countdownInfo) {
+            countdownInfo.textContent = `$RAY to the moon...`;
+        }
+    }
+    
+    // Initialize countdown timer
+    updateCountdown();
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+
     // Improved smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
