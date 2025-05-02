@@ -379,6 +379,60 @@ header.scrolled .logo img {
     width: 100%;
 }
 
+.nav-badge {
+    font-size: 0.6rem;
+    background: linear-gradient(45deg, var(--accent), var(--secondary));
+    color: white;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    margin-left: 0.3rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    position: relative;
+    animation: pulse 1.5s infinite;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.nav-game {
+    position: relative;
+}
+
+.nav-game:hover .nav-badge {
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+}
+
+.game-link {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--secondary);
+    transition: var(--transition);
+    margin-top: 5px;
+    position: relative;
+    text-decoration: underline;
+}
+
+.game-link:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.game-link .nav-badge {
+    font-size: 0.5rem;
+    padding: 0.05rem 0.25rem;
+    animation: pulse 2s infinite;
+}
+
+.game-link.small {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+.game-link.small .nav-badge {
+    font-size: 0.5rem;
+    padding: 0.05rem 0.2rem;
+}
+
 .glow-btn {
     background: linear-gradient(90deg, var(--primary), var(--primary-dark));
     color: white;

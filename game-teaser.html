@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ray the Moon Boy - Game Teaser</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Righteous&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .game-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #0a0a1a;
+            color: white;
+        }
+
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 20%, rgba(138, 99, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(64, 221, 255, 0.12) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(10, 10, 26, 0.95), rgba(10, 10, 26, 0.7));
+            z-index: 0;
+        }
+
+        .game-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .game-logo {
+            max-width: 300px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px rgba(138, 99, 255, 0.7));
+            animation: pulsate 3s ease-in-out infinite;
+        }
+
+        @keyframes pulsate {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(138, 99, 255, 0.7)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(138, 99, 255, 1)); }
+        }
+
+        .game-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            color: transparent;
+            background: linear-gradient(to right, #ff5588, #8a63ff, #40ddff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(255, 85, 136, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .character {
+            width: 200px;
+            height: 200px;
+            margin: 1rem 0;
+            position: relative;
+            z-index: 1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .character-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 1.5rem;
+        }
+
+        .character-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(138, 99, 255, 0.6) 0%, rgba(64, 221, 255, 0.2) 50%, transparent 70%);
+            filter: blur(15px);
+            z-index: 0;
+            animation: float 4s ease-in-out infinite, pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(0.8); }
+            100% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .game-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .game-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(45deg, #4f1c9e, #7d3fcc);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(125, 63, 204, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ccff, #ff00cc);
+            z-index: -1;
+            background-size: 400%;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-btn:hover::before {
+            opacity: 1;
+            animation: glowing 20s linear infinite;
+        }
+
+        .game-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            box-shadow: 0 0 10px rgba(125, 63, 204, 0.3);
+        }
+
+        .game-btn:disabled::before {
+            display: none;
+        }
+
+        .game-btn:disabled i {
+            animation: none;
+        }
+
+        .game-btn i {
+            font-size: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .game-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(125, 63, 204, 0.3), 0 0 20px rgba(125, 63, 204, 0.5);
+        }
+
+        .game-btn:active {
+            transform: translateY(0);
+        }
+
+        .loading-section {
+            margin: 1.5rem 0;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .loading-bar-container {
+            width: 100%;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 3px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(138, 99, 255, 0.3);
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4f1c9e, #7d3fcc, #ff5588);
+            border-radius: 40px;
+            width: 0%;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(138, 99, 255, 0.7);
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .loading-pixels {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            height: calc(100% - 6px);
+            width: calc(100% - 6px);
+            overflow: hidden;
+            border-radius: 40px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .loading-pixels::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 4px,
+                rgba(0, 0, 0, 0.2) 4px,
+                rgba(0, 0, 0, 0.2) 8px
+            );
+            z-index: 2;
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: 'Press Start 2P', cursive;
+            margin-top: 0.8rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(138, 99, 255, 0.7);
+        }
+
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: particles 15s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes particles {
+            0% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        .moon {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #f5f5f5, #c4c4c4);
+            border-radius: 50%;
+            top: 15%;
+            right: 15%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+            z-index: 2;
+            animation: moonGlow 8s infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.7); }
+            100% { box-shadow: 0 0 50px rgba(255, 255, 255, 0.9), 0 0 80px rgba(255, 255, 255, 0.4); }
+        }
+
+        .moon::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(220, 220, 220, 0.8);
+            border-radius: 50%;
+            top: 25%;
+            left: 25%;
+            box-shadow: 15px 10px 0 -3px rgba(220, 220, 220, 0.8),
+                        35px 20px 0 -4px rgba(220, 220, 220, 0.6);
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .home-btn:hover {
+            background: rgba(138, 99, 255, 0.3);
+            box-shadow: 0 0 15px rgba(138, 99, 255, 0.5);
+            transform: translateX(5px);
+        }
+
+        .game-version {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            font-family: 'Press Start 2P', cursive;
+            z-index: 100;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(138, 99, 255, 0.5);
+        }
+
+        .pixelated-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: inset 0 0 15px rgba(138, 99, 255, 0.5);
+        }
+
+        .pixelated-border::before,
+        .pixelated-border::after {
+            content: '';
+            position: absolute;
+            background-image: 
+                linear-gradient(to right, rgba(138, 99, 255, 0.5) 50%, transparent 50%),
+                linear-gradient(to right, rgba(138, 99, 255, 0.5) 50%, transparent 50%);
+            background-size: 20px 2px;
+            background-repeat: repeat-x;
+            width: 100%;
+            height: 2px;
+        }
+
+        .pixelated-border::before {
+            top: 10px;
+            animation: pixelMoveRight 60s linear infinite;
+        }
+
+        .pixelated-border::after {
+            bottom: 10px;
+            animation: pixelMoveLeft 60s linear infinite;
+        }
+
+        @keyframes pixelMoveRight {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes pixelMoveLeft {
+            0% { background-position: 1000px 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .game-logo {
+                max-width: 220px;
+            }
+            
+            .game-title {
+                font-size: 1.5rem;
+            }
+            
+            .character-container,
+            .character {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .game-buttons {
+                max-width: 260px;
+            }
+            
+            .game-btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .loading-section {
+                max-width: 300px;
+            }
+            
+            .moon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .home-btn {
+                font-size: 0.6rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-logo {
+                max-width: 180px;
+            }
+            
+            .game-title {
+                font-size: 1.2rem;
+            }
+            
+            .character-container,
+            .character {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .game-buttons {
+                max-width: 220px;
+            }
+            
+            .game-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.7rem;
+            }
+            
+            .game-btn i {
+                font-size: 0.8rem;
+            }
+            
+            .loading-text {
+                font-size: 0.7rem;
+            }
+            
+            .moon {
+                width: 50px;
+                height: 50px;
+                top: 10%;
+                right: 10%;
+            }
+
+            .moon::after {
+                width: 8px;
+                height: 8px;
+                box-shadow: 8px 5px 0 -3px rgba(220, 220, 220, 0.8),
+                            20px 10px 0 -4px rgba(220, 220, 220, 0.6);
+            }
+
+            .home-btn {
+                font-size: 0.5rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .game-version {
+                font-size: 0.5rem;
+            }
+        }
+
+        /* Game Modal UI */
+        .game-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .game-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #0c0c1d;
+            border: 2px solid #7d3fcc;
+            border-radius: 6px;
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.4s;
+            box-shadow: 0 0 30px rgba(138, 99, 255, 0.5), inset 0 0 15px rgba(64, 221, 255, 0.2);
+        }
+
+        .game-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(138, 99, 255, 0.4);
+        }
+
+        .modal-title {
+            font-family: 'Press Start 2P', cursive;
+            color: #8a63ff;
+            font-size: 1.2rem;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(138, 99, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .modal-body {
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            padding: 5px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(45deg, #4f1c9e, #7d3fcc);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(138, 99, 255, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 99, 255, 0.5);
+            background: linear-gradient(45deg, #6029cc, #8a4fdd);
+        }
+
+        .modal-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .modal-icon {
+            position: absolute;
+            top: -25px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #4f1c9e, #7d3fcc);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px rgba(138, 99, 255, 0.7);
+        }
+
+        .modal-address {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(138, 99, 255, 0.7);
+        }
+
+        .pixel-corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #7d3fcc;
+        }
+
+        .pixel-corner.top-left {
+            top: -2px;
+            left: -2px;
+        }
+
+        .pixel-corner.top-right {
+            top: -2px;
+            right: -2px;
+        }
+
+        .pixel-corner.bottom-left {
+            bottom: -2px;
+            left: -2px;
+        }
+
+        .pixel-corner.bottom-right {
+            bottom: -2px;
+            right: -2px;
+        }
+
+        /* Modal border glow effect */
+        .modal-glow {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid rgba(138, 99, 255, 0.6);
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: -1;
+            animation: borderPulse 2s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { 
+                box-shadow: 0 0 15px rgba(138, 99, 255, 0.5);
+                border-color: rgba(138, 99, 255, 0.6);
+            }
+            100% { 
+                box-shadow: 0 0 25px rgba(138, 99, 255, 0.8), 0 0 40px rgba(64, 221, 255, 0.4);
+                border-color: rgba(138, 99, 255, 0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                max-width: 450px;
+            }
+            
+            .modal-title {
+                font-size: 1rem;
+            }
+            
+            .modal-body {
+                font-size: 1.1rem;
+            }
+            
+            .modal-btn {
+                font-size: 0.8rem;
+                padding: 12px 25px;
+            }
+
+            .modal-address {
+                font-size: 0.8rem;
+                top: -35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 15px;
+                max-width: 320px;
+            }
+            
+            .modal-title {
+                font-size: 0.9rem;
+            }
+            
+            .modal-body {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .modal-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: -20px;
+            }
+            
+            .modal-address {
+                font-size: 0.7rem;
+                top: -30px;
+            }
+
+            .modal-btn {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-overlay"></div>
+        
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-arrow-left"></i> Home
+        </a>
+        
+        <div class="moon"></div>
+        
+        <div class="particles-container" id="particles-container"></div>
+        
+        <div class="game-content">
+            <img src="images/ray-logo.png" alt="Ray the Moon Boy Logo" class="game-logo">
+            
+            <h1 class="game-title">Ray The MoonBoy</h1>
+            
+            <div class="character-container">
+                <div class="character-glow"></div>
+                <img src="images/12.png" alt="Ray Character" class="character" id="character">
+            </div>
+            
+            <div class="loading-section">
+                <div class="loading-bar-container">
+                    <div class="loading-bar" id="loading-progress"></div>
+                    <div class="loading-pixels"></div>
+                </div>
+                <div class="loading-text" id="loading-text">Loading game assets... <span id="loading-percent">0%</span></div>
+            </div>
+            
+            <div class="game-buttons">
+                <button class="game-btn" id="play-btn" disabled>
+                    <i class="fas fa-rocket"></i> Play Game
+                </button>
+                <button class="game-btn" id="leaderboard-btn" disabled>
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </button>
+                <button class="game-btn" id="settings-btn" disabled>
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+            </div>
+        </div>
+        
+        <div class="pixelated-border"></div>
+        <div class="game-version">v0.1.0 Beta</div>
+    </div>
+
+    <!-- Game Modal UI -->
+    <div class="game-modal" id="gameModal">
+        <div class="modal-content">
+            <div class="modal-address" id="modalAddress">Ray The MoonBoy says</div>
+            <div class="modal-icon">
+                <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="modal-glow"></div>
+            <div class="pixel-corner top-left"></div>
+            <div class="pixel-corner top-right"></div>
+            <div class="pixel-corner bottom-left"></div>
+            <div class="pixel-corner bottom-right"></div>
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Game Notification</h3>
+            </div>
+            <div class="modal-body" id="modalBody">
+                Game launching Soon! This is just a teaser - full game coming soon!
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="modalButton">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init();
+            
+            // Create particles
+            createParticles();
+            
+            // Simulate loading progress
+            const loadingBar = document.getElementById('loading-progress');
+            const loadingPercent = document.getElementById('loading-percent');
+            const loadingText = document.getElementById('loading-text');
+            const playBtn = document.getElementById('play-btn');
+            const leaderboardBtn = document.getElementById('leaderboard-btn');
+            const settingsBtn = document.getElementById('settings-btn');
+            const character = document.getElementById('character');
+            
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += Math.floor(Math.random() * 5) + 1;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(loadingInterval);
+                    
+                    // Enable buttons when loading is complete
+                    playBtn.disabled = false;
+                    leaderboardBtn.disabled = false;
+                    settingsBtn.disabled = false;
+                    
+                    loadingBar.style.width = '100%';
+                    loadingPercent.textContent = '100%';
+                    
+                    // Change loading text with typing effect
+                    typeText('Game ready! Click Play to start!');
+                    
+                    // Add extra animation to character
+                    character.style.animation = 'float 4s ease-in-out infinite, pulsate 2s ease-in-out infinite';
+                } else {
+                    loadingBar.style.width = progress + '%';
+                    loadingPercent.textContent = progress + '%';
+                }
+            }, 180);
+            
+            // Button click handlers with sound effects
+            playBtn.addEventListener('click', function() {
+                playSound('play');
+                this.classList.add('active');
+                showGameModal('Game Launch', 'Game launching! This is just a teaser - full game coming soon!');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300);
+            });
+            
+            leaderboardBtn.addEventListener('click', function() {
+                playSound('menu');
+                this.classList.add('active');
+                showGameModal('Leaderboard', 'Leaderboard will be available in the full version!');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300);
+            });
+            
+            settingsBtn.addEventListener('click', function() {
+                playSound('menu');
+                this.classList.add('active');
+                showGameModal('Settings', 'Settings will be available in the full version!');
+                setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300);
+            });
+            
+            // Game Modal Functionality
+            const gameModal = document.getElementById('gameModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const modalButton = document.getElementById('modalButton');
+            const modalAddress = document.getElementById('modalAddress');
+            
+            function showGameModal(title, message) {
+                modalTitle.textContent = title;
+                modalBody.textContent = message;
+                modalAddress.textContent = 'Ray The MoonBoy' + ' says';
+                gameModal.classList.add('active');
+                
+                playSound('notification');
+            }
+            
+            modalButton.addEventListener('click', function() {
+                gameModal.classList.remove('active');
+                playSound('click');
+            });
+            
+            // Add custom cursor from main site if it exists
+            const hasCustomCursor = document.querySelector('.cursor-dot') !== null;
+            if (hasCustomCursor) {
+                const cursorDot = document.querySelector('.cursor-dot');
+                const cursorOutline = document.querySelector('.cursor-outline');
+                
+                window.addEventListener('mousemove', function(e) {
+                    cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                    cursorOutline.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                });
+            }
+            
+            // Typing effect function
+            function typeText(text) {
+                loadingText.textContent = '';
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    if (i < text.length) {
+                        loadingText.textContent += text.charAt(i);
+                        i++;
+                        playSound('type');
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 50);
+            }
+            
+            // Create particles function
+            function createParticles() {
+                const container = document.getElementById('particles-container');
+                const colors = ['#8a63ff', '#40ddff', '#ff5588', '#ffffff'];
+                
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Random position
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+                    particle.style.left = `${x}%`;
+                    particle.style.top = `${y}%`;
+                    
+                    // Random size
+                    const size = Math.random() * 4 + 1;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    // Random color
+                    const colorIndex = Math.floor(Math.random() * colors.length);
+                    particle.style.backgroundColor = colors[colorIndex];
+                    
+                    // Random movement
+                    const moveX = (Math.random() - 0.5) * 200;
+                    const moveY = (Math.random() - 0.5) * 200;
+                    particle.style.setProperty('--x', `${moveX}px`);
+                    particle.style.setProperty('--y', `${moveY}px`);
+                    
+                    // Random animation delay
+                    const delay = Math.random() * 15;
+                    particle.style.animationDelay = `${delay}s`;
+                    
+                    // Random opacity
+                    const opacity = Math.random() * 0.5 + 0.3;
+                    particle.style.opacity = opacity;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            // Play sound function (dummy function, would connect to actual sounds)
+            function playSound(type) {
+                // In a real implementation, you would play actual sounds here
+                console.log(`Playing ${type} sound`);
+            }
+        });
+    </script>
+</body>
+</html> 
