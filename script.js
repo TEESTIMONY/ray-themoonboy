@@ -96,20 +96,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCountdown() {
         const now = new Date();
         
-        // Find the next Friday
-        const nextFriday = new Date();
-        nextFriday.setDate(now.getDate() + (5 + 7 - now.getDay()) % 7);
+        // Set the target date to 7pm WAT today
+        const targetDate = new Date();
         
-        // Set time to 7:00 PM
-        nextFriday.setHours(19, 0, 0, 0);
+        // Set time to 7:00 PM WAT
+        // WAT is UTC+1
+        targetDate.setUTCHours(18, 0, 0, 0); // 18:00 UTC = 19:00 WAT
         
-        // If today is Friday and it's after 7pm, set to next Friday
-        if (now.getDay() === 5 && now.getHours() >= 19) {
-            nextFriday.setDate(nextFriday.getDate() + 7);
-        }
-        
-        // Calculate the time difference
-        const timeDifference = nextFriday - now;
+        // If it's already past 7pm WAT today, the countdown should show zeros
+        const timeDifference = Math.max(0, targetDate - now);
         
         // Calculate days, hours, minutes and seconds
         const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -123,14 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         
-        // Update countdown info with exact date time
-        const options = { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-        const formattedLaunchDate = nextFriday.toLocaleDateString('en-US', options);
-        
-        // Get the countdown info element and update if it exists
+        // Update countdown info text
         const countdownInfo = document.querySelector('.countdown-info p');
         if (countdownInfo) {
-            countdownInfo.textContent = `$RAY to the moon...`;
+            if (timeDifference <= 0) {
+                countdownInfo.textContent = `$RAY has launched! 🚀`;
+            } else {
+                countdownInfo.textContent = `$RAY to the moon...`;
+            }
         }
     }
     
