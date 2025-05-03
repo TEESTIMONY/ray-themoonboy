@@ -61,42 +61,7 @@
             </div>
         </section>
 
-        <section class="countdown-section">
-            <div class="section-header">
-                <h2>Token Launch Countdown</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="countdown-container">
-                <div class="countdown-timer">
-                    <div class="countdown-item">
-                        <span id="days">00</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours">00</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes">00</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds">00</span>
-                        <span class="countdown-label">Seconds</span>
-                    </div>
-                </div>
-                <div class="countdown-info">
-                    <p>$RAY to the moon... </p>
-                </div>
-                <div class="countdown-decoration">
-                    <span class="star-decoration star-1">✦</span>
-                    <span class="star-decoration star-2">✧</span>
-                    <span class="star-decoration star-3">✦</span>
-                    <span class="star-decoration star-4">✧</span>
-                </div>
-            </div>
-        </section>
-
+       
         <section class="about" id="about">
             <div class="section-header">
                 <h2>About Ray</h2>
@@ -174,8 +139,12 @@
                     <p>Total Supply: 1,000,000,000 $RAY</p>
                     <div class="token-buttons">
                         <button class="glow-btn primary">Buy $RAY <i class="fas fa-external-link-alt"></i></button>
-                        <button id="copy-contract" class="glow-btn secondary disabled" data-contract="coming-soon">Contract Coming Soon <i class="fas fa-clock"></i></button>
+                        <button id="copyContractBtn" class="glow-btn secondary" data-contract="0xdcff528587560c2789d448129715d325207d6127d9fb179bfe970b8fffc79530::ray::RAY">Contract <i class="fas fa-copy"></i></button>
                     </div>
+                    <div id="copyMessage" class="copy-message" style="display: none; text-align: center;">
+                        Contract copied to clipboard!
+                      </div>
+                      
                 </div>
             </div>
         </section>
@@ -315,7 +284,34 @@
     <!-- Custom cursor elements -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
     <script src="script.js"></script>
+
+    <script>
+        const contractAddress = "0xdcff528587560c2789d448129715d325207d6127d9fb179bfe970b8fffc79530::ray::RAY";
+        const copyBtn = document.getElementById("copyContractBtn");
+        const message = document.getElementById("copyMessage");
+    
+        copyBtn.addEventListener("click", () => {
+          navigator.clipboard.writeText(contractAddress)
+            .then(() => {
+              message.style.display = "block";
+              message.textContent = "Contract copied to clipboard!";
+              setTimeout(() => {
+                message.style.display = "none";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Failed to copy: ", err);
+              message.style.display = "block";
+              message.style.color = "red";
+              message.textContent = "Failed to copy address.";
+              setTimeout(() => {
+                message.style.display = "none";
+                message.style.color = "green";
+              }, 2000);
+            });
+        });
+      </script>
+
 </body>
 </html> 

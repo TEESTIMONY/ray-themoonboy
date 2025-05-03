@@ -501,6 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyContractBtn = document.getElementById('copy-contract');
     
     if (copyContractBtn) {
+        console.log('here');
         copyContractBtn.addEventListener('click', function() {
             const contractAddress = this.getAttribute('data-contract');
             
@@ -571,6 +572,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Could not copy text: ', err);
                 });
         });
+
+    
         
         // Function to enable contract button when a valid address is set
         window.enableContractButton = function(address) {
@@ -582,7 +585,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     }
+
+    else {
+        console.log(damn);
+    }
 });
+
 
 // Creates enhanced floating particles in the hero section
 function createParticles(count) {
